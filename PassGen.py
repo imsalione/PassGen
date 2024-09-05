@@ -1,10 +1,10 @@
 import random
 import pyperclip
 
-# لیست کاراکترهای خاص
+# List of special characters
 special_chars = ['@', '#', '$', '%', '^', '&', '*']
 
-# لیست کاراکترهای عمومی (حروف و اعداد)
+# List of general characters (letters and digits)
 general_chars = ['a', 'b', 'c', 'd', 'e', 'f', 'g',
 'h', 'i', 'j', 'k', 'l', 'm', 'n',
 'o', 'p', 'q', 'r', 's', 't', 'u',
@@ -13,42 +13,41 @@ general_chars = ['a', 'b', 'c', 'd', 'e', 'f', 'g',
 'J', 'K', 'L', 'M', 'N', '0', 'P',
 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
 'X', 'Y', 'Z', '1', '2', '3', '4',
-'5', '6', '7' , '8' , '9']
+'5', '6', '7', '8', '9']
 
-# دریافت نام اکانت و شناسه از کاربر
+# Get account name and user ID from the user
 account_name = input("Enter the account name: ")
 user_id = input("Enter your ID: ")
-account_name.capitalize()
 
-# تعداد کاراکترهای پسورد
+# Length of the password
 password_length = 16
 
-# انتخاب حداقل دو کاراکتر خاص
+# Select at least two special characters
 password = random.sample(special_chars, 2)
 
-# انتخاب بقیه کاراکترها از کاراکترهای عمومی
+# Select the remaining characters from the general characters
 remaining_length = password_length - len(password)
 password += random.choices(general_chars + special_chars, k=remaining_length)
 
-# مخلوط کردن کاراکترها به صورت تصادفی
+# Shuffle the characters randomly
 random.shuffle(password)
 
-# تبدیل لیست کاراکترها به یک رشته
+# Convert the list of characters into a string
 password = ''.join(password)
 
-# نمایش اطلاعات
+# Display the information
 print(f"{account_name} password")
 print(f"id: {user_id}")
 print(f"password: {password}")
 
-# ذخیره کردن پسورد در حافظه (clipboard)
+# Copy the password to the clipboard
 pyperclip.copy(password)
 print("Password has been copied to clipboard. You can paste it now!")
 
-# مسیر و نام فایل
+# File path and name
 file_path = r'C:\password.txt'
 
-# ذخیره اطلاعات در فایل به صورت افزودن (append)
+# Save the information in the file (append mode)
 with open(file_path, 'a') as file:
     file.write(f"\n{account_name} password\n")
     file.write(f"id: {user_id}\n")
