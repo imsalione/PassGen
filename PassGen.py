@@ -19,8 +19,14 @@ general_chars = ['a', 'b', 'c', 'd', 'e', 'f', 'g',
 account_name = input("Enter the account name: ")
 user_id = input("Enter your ID: ")
 
-# Length of the password
-password_length = 16
+# Check Length of the password
+while True:
+    password_length = int(input("Enter length of password: "))
+    if password_length < 16:
+        print("The number of password is no safe! choose number more than 16 ")
+        continue
+    break
+    
 
 # Select at least two special characters
 password = random.sample(special_chars, 2)
