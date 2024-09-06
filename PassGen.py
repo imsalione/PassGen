@@ -35,14 +35,9 @@ random.shuffle(password)
 # Convert the list of characters into a string
 password = ''.join(password)
 
-# Display the information
-print(f"{account_name} password")
-print(f"id: {user_id}")
-print(f"password: {password}")
-
 # Copy the password to the clipboard
 pyperclip.copy(password)
-print("Password has been copied to clipboard. You can paste it now!")
+print(f"{account_name.capitalize()} Password has been copied to clipboard!")
 
 # File path and name
 file_path = r'C:\password.txt'
@@ -52,5 +47,3 @@ with open(file_path, 'a') as file:
     file.write(f"\n{account_name} password\n")
     file.write(f"id: {user_id}\n")
     file.write(f"password: {password}\n")
-
-print(f"Password saved in {file_path}")
